@@ -74,16 +74,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:page', function(req,res) {
-    var pageNumber = get.params.page;
+    var pageNumber = req.params.page;
     res.send(createTemplate(pages[pageNumber]));
-});
-
-app.get('/page2', function(req,res) {
-    res.sendFile(path.join(__dirname, 'ui', 'page2.html'));
-});
-
-app.get('/page3', function(req,res) {
-    res.sendFile(path.join(__dirname, 'ui', 'page3.html'));
 });
 
 app.get('/ui/style.css', function (req, res) {
