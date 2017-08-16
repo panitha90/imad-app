@@ -74,7 +74,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:page', function(req,res) {
-    var pageNumber = get.params.pagepages[page]
+    var pageNumber = get.params.page;
     res.send(createTemplate(pages[pageNumber]));
 });
 
