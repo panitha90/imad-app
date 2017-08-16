@@ -5,13 +5,34 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var page1 = {
+var pages = {
+    page1:   {
   title: 'Page 1 of Anitha Webapp' ,
   date: 'Aug 16 2017',
   heading: 'Into to Webapp',
   content: `    <p>
                     Examples of browser applications are simple office software (word processors, online spreadsheets, and presentation tools), but can also include more advanced applications such as project management, computer-aided design, video editing and point-of-sale.
                 </p>`
+    },
+    page2: {
+  title: 'Page 2 of Anitha Webapp' ,
+  date: 'Aug 16 2017',
+  heading: 'Database',
+  content: `    <p>
+                    A database is an organized collection of data.[1] It is a collection of schemas, tables, queries, reports, views, and other objects. Database designers typically organize the data to model aspects of reality in a way that supports processes requiring information, such as (for example) modelling the availability of rooms in hotels in a way that supports finding a hotel with vacancies.
+                </p>
+                <p>
+                    A database-management system (DBMS) is a computer-software application that interacts with end-users, other applications, and the database itself to capture and analyze data. 
+                </p>`
+    },
+    page3: {
+  title: 'Page 3 of Anitha Webapp' ,
+  date: 'Aug 16 2017',
+  heading: 'Reverse Proxy',
+  content: `   <p>
+                    In computer networks, a reverse proxy is a type of proxy server that retrieves resources on behalf of a client from one or more servers. These resources are then returned to the client as if they originated from the Web server itself.[1] Contrary to a forward proxy, which is an intermediary for its associated clients to contact any server, a reverse proxy is an intermediary for its associated servers to be contacted by any client.
+                </p>`
+    },
 };
 
 function createTemplate(data){
@@ -52,8 +73,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/page1', function(req,res) {
-    res.send(createTemplate(page1));
+app.get('/:page', function(req,res) {
+    var pageNumber = get.params.pagepages[pageNumber]
+    res.send(createTemplate(pages[pageNumber]));
 });
 
 app.get('/page2', function(req,res) {
