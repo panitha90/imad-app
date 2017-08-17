@@ -15,3 +15,11 @@ img.onclick = function () {
     var interval = setInterval(moveRight, 50);
 };
 
+//Applying counter value
+var counter = 0;
+var button = document.getElementById('button');
+button.onclick = function(){
+  counter = counter + 1;  
+  var span = document.getElementById('counter');
+  span.innerHTML = counter.toString();
+};
