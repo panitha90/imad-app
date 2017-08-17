@@ -5,7 +5,7 @@ var element = document.getElementById("main-text");
 element.innerHTML= "I have changed the HTML now";
 
 //move an image
-var image = document.getElementById("madi");
-image.onclick = function(){
+var image = document.getElementById('madi');
+image.onClick = function(){
   img.style.marginRight = '50px' ;
 };
