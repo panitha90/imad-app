@@ -17,9 +17,9 @@ img.onclick = function () {
 
 //Applying counter value
 var counter = 0;
-var buttonClick = document.getElementById('clickme');
-buttonClick.onclick = function () {
-  counter = counter + 1;  
-  var span = document.getElementById('counter');
-  span.innerHTML = 7;//counter.toString();
+var button = document.getElementById('clickme');
+button.onclick = function(){
+    var element = document.getElementById("counter");
+    counter = counter + 1;
+    element.innerHTML = counter.toString();
 };
