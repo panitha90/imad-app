@@ -16,7 +16,6 @@ img.onclick = function () {
 };*/
 
 //Applying counter value
-var counter = 0;
 var button = document.getElementById("counter");
 button.onclick = function(){
     //create a request
