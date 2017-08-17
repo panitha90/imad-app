@@ -6,6 +6,12 @@ element.innerHTML= "I have changed the HTML now";
 
 //move an image
 var image = document.getElementById('madi');
-image.onClick = function(){
-  image.style.marginLeft = '100px' ;
+var marginLeft = 0;
+function moveRight(){
+    marginLeft = marginLeft + 10;
+    image.style.marginLeft = marginLeft + 'px';
+}
+image.onClick = function () {
+    var interval = setInterval(moveRight,100);
 };
+
