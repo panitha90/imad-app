@@ -24,7 +24,8 @@ button.onclick = function(){
     
     //capture the response and store in variable
     request.onReadyStateChange = function(){
-        if(request.readystate == XMLHttpRequest.DONE){
+        if(request.readyState == XMLHttpRequest.DONE){
+            console.log('Loaded!');
             if(request.status == 200){
                 var counter = request.responseText;
                 var span = document.getElementById("count");
