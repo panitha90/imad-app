@@ -39,8 +39,6 @@ button.onclick = function(){
 
 
 //submit name
-var nameInput = document.getElementById("name");
-var nameValue = nameInput.value;
 var submit = document.getElementById("submit_btn");
 submit.onclick = function(){
   
@@ -65,6 +63,8 @@ submit.onclick = function(){
         
     //nOT DONE SO NO ACTION
     };
+    var nameInput = document.getElementById("name");
+    var nameValue = nameInput.value;
     request.open('GET','http://panitha90.imad.hasura-app.io/submit-name?name=' + nameValue,true);
     request.send(null);
   
