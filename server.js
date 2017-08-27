@@ -96,8 +96,8 @@ app.get('/ui/main.js', function (req, res) {
 });
 
 var names=[];
-app.get('/submit-name/:name',function(req, res){
-   var nameInp = req.params.name;
+app.get('/submit-name',function(req, res){ //QUERY STRING so url is /submit-name?name=xxxx
+   var nameInp = req.query.name;
    
    names.push(nameInp);
    
