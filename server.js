@@ -99,7 +99,7 @@ app.get('/test-db', function(req, res) {
 });
 
 app.get('/pages/:pageName', function(req,res) {
-    pool.query("SELECT * from article where title = '" + req.params.pageName + "'", function(err, result) {
+    pool.query("SELECT * from article where title = $1" ,req.params.pageName , function(err, result) {
         if(err){
             res.status(500).send(err.toString());
         } else {
