@@ -98,10 +98,20 @@ app.get('/test-db', function(req, res) {
     });
 });
 
-/*app.get('/:page', function(req,res) {
-    var pageNumber = req.params.page;
-    res.send(createTemplate(pages[pageNumber]));
-});*/
+app.get('/pages/:pageName', function(req,res) {
+    pool.query("SELECT * from article where title = " + req.params.pageName, function(err, result) {
+        if(err){
+            res.status(500).send(err.toString());
+        } else {
+            if(result.rows.length === 0){
+                res.status(404).send("Result not found for article");
+            } else {
+                var articleData = result.rows[0];
+                res.send(createTemplate(articleData));
+            }
+        }
+    });
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
