@@ -65,8 +65,8 @@ submit.onclick = function(){
     };
     var username = document.getElementById("username");
     var password = document.getElementById("password");
-    request.setRequestHeader('Content-Type', 'application/json');
     request.open('POST','http://panitha90.imad.hasura-app.io/login', true);
+    request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({username: username, password: password}));
   
 
