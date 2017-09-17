@@ -16,7 +16,7 @@ img.onclick = function () {
 };*/
 
 //Applying counter value
-var button = document.getElementById("counter");
+/*var button = document.getElementById("counter");
 button.onclick = function(){
     //create a request
     var request = new XMLHttpRequest();
@@ -36,7 +36,7 @@ button.onclick = function(){
     request.open('GET','http://panitha90.imad.hasura-app.io/counter',true);
     request.send(null);
 };
-
+*/
 
 //submit name
 var submit = document.getElementById("submit_btn");
@@ -50,23 +50,23 @@ submit.onclick = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             if(request.status === 200){
                 //Capture list of names and render to HTML
-                var names = request.responseText;
-                names=JSON.parse(names);
-                var list='';
-                for(var i = 0;i<names.length;i++){
-                    list = list + '<li>' + names[i] + '</li>';
-                }
-                var ul = document.getElementById("namelist");
-                ul.innerHTML = list;                
+                console.log("user logged in");
+                alert('Logged in successfully');
+            } else if (request.status === 403){
+                console.log("password incorect");
+                alert('password incorect');
+            } else if (request.status === 500){
+                console.log("Internal server error");
+                alert('Internal server error');
             }
         }
         
     //nOT DONE SO NO ACTION
     };
-    var nameInput = document.getElementById("name");
-    var nameValue = nameInput.value;
-    request.open('GET','http://panitha90.imad.hasura-app.io/submit-name?name=' + nameValue,true);
-    request.send(null);
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    request.open('POST','http://panitha90.imad.hasura-app.io/login', true);
+    request.send(JSON.stringify({username: username, password: password}));
   
 
 };
