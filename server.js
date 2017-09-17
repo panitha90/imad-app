@@ -154,6 +154,32 @@ app.post('/create-user', function(req, res) {
     });
 });
 
+app.post('/login', function(req, res) {
+    //JSON request
+    var username = req.body.username;
+    var password = req.body.password;
+
+    pool.query('SELECT * FROM "user" where username = $1',[username], function(err, result) {
+        if(err){
+            res.status(500).send(err.toString());
+        } else {
+            if(result.rows.length === 0){
+                res.send(403).send("invalid username/password");
+            } else{
+                var dbString =result.rows[0].password;
+                var salt = dbString.split('$')[2];
+                var hashPwd = hash(password, salt);
+                if(hashPwd === dbString){
+                    res.send("Successfully logged in");
+                } else {
+                    res.send(403).send("invalid username/password");
+                }
+                
+            }
+        }
+    });
+});
+
 var names=[];
 app.get('/submit-name',function(req, res){ //QUERY STRING so url is /submit-name?name=xxxx
    var nameInp = req.query.name;
